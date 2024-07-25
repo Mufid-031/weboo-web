@@ -1,9 +1,10 @@
 <script setup>
-import Navbar from './components/NavbarItem.vue'
 import { RouterView } from 'vue-router'
+import "primeicons/primeicons.css";
+
+
 </script>
 
 <template>
-  <Navbar />
-  <RouterView />
+  <RouterView :searchValue="searchValue" />
 </template>
