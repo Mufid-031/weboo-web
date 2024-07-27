@@ -1,5 +1,6 @@
 <script>
 import { useRoute, RouterLink } from 'vue-router'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import NavbarItem from '@/components/NavbarItem.vue'
 import { useAnimeStore } from '@/stores/anime'
 
@@ -7,13 +8,12 @@ export default {
   setup() {
     const animeStore = useAnimeStore()
 
-    return {
-      animeStore
-    }
+    return { animeStore }
   },
   components: {
     NavbarItem,
-    RouterLink
+    RouterLink,
+    PulseLoader
   },
   data() {
     return {
@@ -32,7 +32,11 @@ export default {
 
 <template>
   <NavbarItem />
+  <section v-if="animeStore.isLoading" class="flex justify-center items-center h-screen">
+    <PulseLoader color="#3b82f6" />
+  </section>
   <section
+    v-else
     v-for="item in animeStore.animeState"
     :key="item.id"
     class="flex flex-col items-center py-5 bg-blue-100 gap-3 md:flex-row md:justify-center md:items-start"

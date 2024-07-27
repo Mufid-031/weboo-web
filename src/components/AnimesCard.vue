@@ -8,7 +8,6 @@ export default {
     ...RouterLink.props,
     anime: Object
   },
-
 }
 </script>
 
